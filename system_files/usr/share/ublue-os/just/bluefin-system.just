@@ -168,11 +168,6 @@ clean-system:
         brew cleanup
     fi
 
-# Configure grub bootmenu visibility
-[group('System')]
-configure-grub:
-    @/usr/libexec/configure-grub.sh
-
 alias switch-stream := rebase-helper
 alias switch-streams := rebase-helper
 alias rollback-helper := rebase-helper
