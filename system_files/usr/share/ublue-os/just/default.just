@@ -14,7 +14,6 @@ bios:
       systemctl reboot --firmware-setup
     fi
 
-
 # Show BIOS info
 bios-info:
     #!/usr/bin/bash
@@ -90,7 +89,20 @@ check-local-overrides:
 # Gather device info to a pastebin
 device-info:
     #!/usr/bin/bash
-    fpaste <(rpm-ostree status) <(fpaste --sysinfo --printonly) <(flatpak list --columns=application,version,options)
+    if ! gum confirm "Submit information to the CentOS pastebin?" ; then
+        exit 0
+    fi
+
+    cat &> /tmp/deviceinfo-out <<EOF
+    --#--# sudo bootc status --verbose:
+    $(sudo bootc status --verbose)
+    --#--# fpaste --sysinfo --printonly:
+    $(fpaste --sysinfo --printonly)
+    --#--# flatpak list --columns=application,version,options:
+    $(flatpak list --columns=application,version,options)
+    EOF
+
+    cat /tmp/deviceinfo-out | fpaste
 
 # Measure Idle Power Draw
 check-idle-power-draw:
