@@ -56,6 +56,7 @@ bbrew:
             exit 0
         fi
     fi
+    echo "Note: Some of these take a while to load, we'll keep working on it."
     bbrew -f "/usr/share/ublue-os/homebrew/$(gum choose $(find "/usr/share/ublue-os/homebrew"/*.Brewfile -exec basename '{}' '.Brewfile' ';')).Brewfile"
 
 cncf:
