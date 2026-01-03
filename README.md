@@ -27,7 +27,7 @@ Reference this layer as a build stage and copy the directories you need:
 
 ### Copy everything:
 ```dockerfile
-FROM ghcr.io/ublue-os/bluefin-common:latest AS bluefin-common
+FROM ghcr.io/projectbluefin/common:latest AS bluefin-common
 
 # Copy all system files
 COPY --from=bluefin-common /system_files /
@@ -38,7 +38,7 @@ COPY --from=bluefin-common /system_files /
 This is what Aurora should use, gives shares the common set of files and keeps the images opinions seperate.
 
 ```dockerfile
-FROM ghcr.io/ublue-os/bluefin-common:latest AS bluefin-common
+FROM ghcr.io/projectbluefin/common:latest AS bluefin-common
 
 # Copy only /etc configuration
 COPY --from=bluefin-common /system_files/etc /etc
@@ -46,7 +46,7 @@ COPY --from=bluefin-common /system_files/etc /etc
 
 ### Copy only the image opinion:
 ```dockerfile
-FROM ghcr.io/ublue-os/bluefin-common:latest AS bluefin-common
+FROM ghcr.io/projectbluefin/common:latest AS bluefin-common
 
 # Copy only /usr/share configuration
 COPY --from=bluefin-common /system_files/usr /usr
