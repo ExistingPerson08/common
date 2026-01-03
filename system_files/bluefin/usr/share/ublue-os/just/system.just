@@ -70,7 +70,7 @@ install-system-flatpaks $confirm="1" $dx_only="0":
     if [[ "$(jq '."image-flavor"' /usr/share/ublue-os/image-info.json)" =~ dx ]] ; then
         ADD_DEVMODE="${ADD_DEVMODE:-1}"
     fi
-    if [ "${ADD_DEVMODE:-1}" == "1" ] ; then
+    if [ "${ADD_DEVMODE:-0}" == "1" ] ; then
         if [ "$confirm" != 0 ] ; then
             gum confirm "Install development flatpaks?" || exit 0
         fi
