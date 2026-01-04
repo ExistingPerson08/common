@@ -35,7 +35,7 @@ install-opentabletdriver:
       echo -ne "blacklist hid_uclogic\nblacklist wacom\n" | sudo tee /etc/modprobe.d/blacklist-opentabletdriver.conf
       rm -rf "${OTD_TMPDIR}"
 
-      sudo flatpak --system install -y flathub net.opentabletdriver.OpenTabletDriver
+      flatpak --system install -y flathub net.opentabletdriver.OpenTabletDriver
 
       mkdir -p "$HOME/.config/systemd/user"
       curl -s "https://raw.githubusercontent.com/flathub/net.opentabletdriver.OpenTabletDriver/refs/heads/master/scripts/opentabletdriver.service" > "$HOME/.config/systemd/user/opentabletdriver.service"
